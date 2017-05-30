@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src='/socket.io/socket.io.js'></script>
+    <script>
+      //porzadek jakis??
+        var socket = io();
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <!-- core ui -->
+    <textarea id="text" placeholder="git gut"></textarea>
+    <button id="save">Save file</button>
+    <!-- core functionality-->
+    <script type='text/javascript' src='/javascripts/main.js'></script>
+  </body>
+</html>
