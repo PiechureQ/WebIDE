@@ -1,10 +1,6 @@
-var saveButton = document.getElementById("save");
-var textArea = document.getElementById("text");
-var charRemaining = document.getElementById("charRemaining");
-
-socket.on('receiveDownload', function (message) {
-    console.log('zapisano w pliku %s', message);
-});
+var saveButton = document.getElementById("save"),
+    textArea = document.getElementById("text"),
+    charRemaining = document.getElementById("charRemaining");
 
 saveButton.addEventListener("click", function () {
     console.log(textArea.value);
@@ -19,6 +15,5 @@ textArea.addEventListener('keyup', function(){
 });
 
 function sendToServer(input) {
-    console.log('przesyłanie %s do serwera', input);
     socket.emit('sendText', {content: input});
 }
