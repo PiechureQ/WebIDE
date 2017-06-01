@@ -12,8 +12,12 @@ var users = require('./routes/users');
 var save = require('./routes/save');
 
 var app = express();
-var server = require('http').Server(app);
+var http = require('http');
+var server = http.Server(app);
 var io = require('socket.io')(server);
+
+
+var isFileSaved = false;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,15 +48,26 @@ io.sockets.on('connection', function (socket) {
     socket.on('sendText', function (data) {
         console.log(data);
         //send file to download
-        fs.writeFile('./files/test.txt', data.message, 'utf8', (err) => {
+        fs.writeFile('./files/test.txt', data.content, 'utf8', (err) => {
             if (err) throw err;
             console.log("file saved and ready to download");
-        })
+            isFileSaved = true;
+        });
 
-        socket.emit('receive',
-            data.message//download request
+        socket.emit('receiveDownload',
+            data.content
         );
     });
+});
+
+app.get('/:file(*)', function(req, res, next){
+    var file = req.params.file
+        , path = __dirname + '/files/' + file;
+
+    console.log('downloading: ' + path);
+
+    if (isFileSaved)
+        res.download(path);
 });
 
 // catch 404 and forward to error handler

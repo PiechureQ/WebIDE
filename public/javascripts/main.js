@@ -1,23 +1,24 @@
 var saveButton = document.getElementById("save");
 var textArea = document.getElementById("text");
-var txt = "";
+var charRemaining = document.getElementById("charRemaining");
 
-socket.on('receive', function (message) {
-    console.log('otrzymano %s', message);
+socket.on('receiveDownload', function (message) {
+    console.log('zapisano w pliku %s', message);
 });
 
 saveButton.addEventListener("click", function () {
-    //1 send txt to node
-    //2 create file.txt on server using nodejs fs
-    //3 send to client, download file.txt
-
     console.log(textArea.value);
-    txt = textArea.value;
+    var txt = textArea.value;
 
     sendToServer(txt);
 });
 
+textArea.addEventListener('keyup', function(){
+    charRemaining.innerHTML = $("#text").val().length;
+    //jquery jest git
+});
+
 function sendToServer(input) {
     console.log('przesyłanie %s do serwera', input);
-    socket.emit('sendText', {message: input});
+    socket.emit('sendText', {content: input});
 }

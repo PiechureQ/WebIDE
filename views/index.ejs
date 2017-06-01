@@ -3,6 +3,7 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
     <script src='/socket.io/socket.io.js'></script>
     <script>
       //porzadek jakis??
@@ -14,8 +15,10 @@
 
     <!-- core ui -->
     <textarea id="text" placeholder="git gut"></textarea>
-    <button id="save">Save file</button>
+    <a href="/test.txt"><button id="save" >Save file</button></a>
+    <p id="charRemaining"></p>
     <!-- core functionality-->
     <script type='text/javascript' src='/javascripts/main.js'></script>
+    <script type="text/javascript" src="/javascripts/jquery.js"></script>
   </body>
 </html>
