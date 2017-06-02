@@ -10,12 +10,18 @@
     </script>
   </head>
   <body>
-    <h1><%= title %></h1>
-
     <!-- core ui  -->
-    <textarea id="text" placeholder="git gut"></textarea>
-    <button id="save" onclick="window.open('/test.txt')">Save file</button>
-    <p id="charRemaining"></p>
+    <main>
+        <fieldset>
+            <legend><%= title %></legend>
+            <textarea id="text" placeholder="Napisz co u Ciebie słychać ..."></textarea>
+
+        </fieldset>
+        <fieldset>
+            Zostało znaków: <span id="charsRemaining"></span>
+            <input type="button" id="save" value="Save file" />
+        </fieldset>
+    </main>
 
     <!-- core functionality-->
     <script type='text/javascript' src='/javascripts/main.js'></script>

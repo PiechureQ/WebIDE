@@ -1,1 +1,1 @@
-body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}a{color:#00B7FF}
+body{width:1000px;margin:auto}main{padding:20px}fieldset{padding:10px;margin-top:20px}fieldset:last-of-type{font-size:25px}fieldset>textarea{resize:none;width:99%;height:100px;float:left;border-color:gray}input[type='button']{padding:10px;float:right;vertical-align:middle}
